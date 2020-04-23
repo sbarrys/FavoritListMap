@@ -1,6 +1,7 @@
 package com.kty.favocritlistmap;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback{
     private MapView mapView = null;
-
+    public String fName;
+    public Double x,y;
 
 
     @Override
@@ -85,7 +87,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_map, container, false);
+        Bundle bundle = getArguments();
+        if(!(bundle==null)){
 
+            fName=bundle.getString("Name");
+            x=bundle.getDouble("X");
+            y=bundle.getDouble("Y");
+            Log.d("x,y", "onCreateView: "+x+"  "+y);
+
+        }else{
+            fName = "기본 시작 위치";
+            x = 37.54892296550104;
+            y = 126.99089033876304;
+
+
+        }
         mapView = (MapView)v.findViewById(R.id.map);
 
         mapView.getMapAsync(this);
@@ -96,23 +112,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback{
 
 
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng SEOUL = new LatLng(37.56, 126.97);
+        Log.d("x,y", "onMapReady: "+x+"  "+y);
+        LatLng STARTPOINT = new LatLng(x,y);
 
         MarkerOptions markerOptions = new MarkerOptions();
 
-        markerOptions.position(SEOUL);
+        markerOptions.position(STARTPOINT);
 
-        markerOptions.title("서울");
+        markerOptions.title(fName);
 
-        markerOptions.snippet("수도");
+        markerOptions.snippet(fName);
 
         googleMap.addMarker(markerOptions);
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(STARTPOINT));
 
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
     }
 }

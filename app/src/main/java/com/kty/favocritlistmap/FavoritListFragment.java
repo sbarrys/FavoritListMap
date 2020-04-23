@@ -48,11 +48,11 @@ public class FavoritListFragment extends Fragment {
     }
     //데이터 준비(최종적으로는 동적으로 추가하거나 삭제할 수 있어야 한다. 이 데이터를 어디에 저장할지 정해야 한다.)
     private void prepareData() {
-        favorit_list_vo_list.add(new favorit_list_VO("서울시청",37.54892296550104,126.99089033876304));
-        favorit_list_vo_list.add(new favorit_list_VO("경복궁",37.54892296550104,126.99089033876304));
-        favorit_list_vo_list.add(new favorit_list_VO("서울역",37.54892296550104,126.99089033876304));
-        favorit_list_vo_list.add(new favorit_list_VO("남산",37.54892296550104,126.99089033876304));
-        favorit_list_vo_list.add(new favorit_list_VO("을지로입구역",37.54892296550104,126.99089033876304));
-    }
+        favorit_list_vo_list.add(new favorit_list_VO("서울시청",37.556491,126.977881));
+        favorit_list_vo_list.add(new favorit_list_VO("경복궁",37.580246,126.9777234));
+        favorit_list_vo_list.add(new favorit_list_VO("서울역",37.555324,126.971350));
+        favorit_list_vo_list.add(new favorit_list_VO("남산",37.555390,126.981656));
+        favorit_list_vo_list.add(new favorit_list_VO("을지로입구역",37.566312,126.982722));
+}
 
 }
